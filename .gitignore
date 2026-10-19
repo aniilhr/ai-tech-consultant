@@ -1,0 +1,33 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
+
+# Local data (SQLite databases, crawl cache, logs)
+/data/
+*.db
+*.db-wal
+*.db-shm
+*.log
+**/evals/results/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

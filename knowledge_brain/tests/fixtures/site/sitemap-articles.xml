@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SYNTHETIC TEST FIXTURE -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{base}/support/solutions</loc><lastmod>2026-01-01</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/101-how-to-add-a-new-membership-plan</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/102-connecting-the-stripe-payment-gateway</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/103-pointing-your-custom-domain</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/104-refund-and-cancellation-policy</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/105-customizing-the-search-results-page</loc><lastmod>2026-09-05</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/106-importing-members-from-a-csv-file</loc><lastmod>2026-09-06</lastmod></url>
+  <url><loc>{base}/support/solutions/articles/107-legacy-widget-settings</loc><lastmod>2026-09-07</lastmod></url>
+</urlset>
