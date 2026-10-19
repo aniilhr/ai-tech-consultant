@@ -1,0 +1,48 @@
+{
+  "_note": "Each expected requirement is matched if ANY of its keyword groups is fully contained (all words) in an extracted requirement's title+description (lowercase).",
+  "requirements": {
+    "01_brightsmile_kickoff": [
+      {"id": "search", "any": [["search", "city"], ["search", "zip"], ["directory", "search"]]},
+      {"id": "specialty_filter", "any": [["specialty"], ["filter"]]},
+      {"id": "tiers", "any": [["basic", "featured"], ["tier"], ["membership"], ["two", "level"]]},
+      {"id": "profile", "any": [["profile"], ["practice name"], ["insurance"]]},
+      {"id": "appointment_request", "any": [["appointment"], ["request form"]]},
+      {"id": "reviews_moderation", "any": [["review"]]},
+      {"id": "import", "any": [["import"], ["spreadsheet"], ["four hundred"], ["400"]]},
+      {"id": "claim_listing", "any": [["claim"], ["invit"]]},
+      {"id": "stripe", "any": [["stripe"], ["payment"]]},
+      {"id": "mobile_branding", "any": [["mobile"], ["phone"], ["brand"], ["modern"]]},
+      {"id": "seo_pages", "any": [["seo"], ["city", "page"], ["landing"]]},
+      {"id": "newsletter", "any": [["newsletter"]]},
+      {"id": "dentrix", "any": [["dentrix"]]},
+      {"id": "dentist_stats", "any": [["stats"], ["views"], ["dashboard"]]}
+    ],
+    "03_fitpro_kickoff": [
+      {"id": "lead_form", "any": [["lead"], ["form"]]},
+      {"id": "lead_matching", "any": [["zip"], ["match"], ["three trainers"], ["near"]]},
+      {"id": "accept_leads", "any": [["accept"]]},
+      {"id": "trainer_profile", "any": [["profile"], ["certification"], ["bio"]]},
+      {"id": "reviews", "any": [["review"]]},
+      {"id": "blog", "any": [["blog"], ["article"]]},
+      {"id": "events", "any": [["event"], ["bootcamp"]]},
+      {"id": "tiers", "any": [["starter"], ["plan"], ["membership"]]},
+      {"id": "messaging", "any": [["messag"], ["inbox"]]},
+      {"id": "zoom", "any": [["zoom"]]},
+      {"id": "reporting", "any": [["report"], ["how many leads"], ["admin view"], ["stats"]]},
+      {"id": "import", "any": [["import"], ["google sheet"], ["eighty"]]}
+    ]
+  },
+  "changes": {
+    "baseline": "01_brightsmile_kickoff",
+    "follow_up": "02_brightsmile_followup",
+    "expected": [
+      {"id": "enterprise_tier", "type": "modified", "keywords": ["enterprise", "third", "multiple locations", "multi-location"], "out_of_scope": null},
+      {"id": "newsletter", "type": "removed", "keywords": ["newsletter", "mailchimp"], "out_of_scope": false},
+      {"id": "booking", "type": "modified", "keywords": ["real-time", "booking", "calendar", "request form"], "out_of_scope": true},
+      {"id": "dentrix", "type": "removed", "keywords": ["dentrix"], "out_of_scope": false},
+      {"id": "import_650", "type": "modified", "keywords": ["six hundred", "650"], "out_of_scope": null},
+      {"id": "spanish", "type": "added", "keywords": ["spanish"], "out_of_scope": true},
+      {"id": "verified_badge", "type": "added", "keywords": ["verified", "license"], "out_of_scope": true}
+    ]
+  }
+}
