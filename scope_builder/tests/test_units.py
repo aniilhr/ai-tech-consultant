@@ -87,3 +87,13 @@ def test_estimate_adds_qa_and_pm_and_sums() -> None:
     assert est.totals.likely == round(sum(t.likely for t in est.tasks), 1)
     assert est.by_requirement["R1"].likely == 2
     assert any("R2" in n for n in est.notes)
+
+
+def test_blank_env_values_mean_unset(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+    from scope.config import Settings
+
+    monkeypatch.setenv("INDICATIVE_HOURLY_RATE", "")
+    monkeypatch.setenv("SCOPE_DB_PATH", "")
+    s = Settings(_env_file=None)  # type: ignore[call-arg]
+    assert s.indicative_hourly_rate is None
+    assert s.db_path.name == "scope.db"

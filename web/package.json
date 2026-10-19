@@ -1,0 +1,29 @@
+{
+  "name": "ai-tech-consultant-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Unified dashboard + gateway for the three AI Tech Consultant services.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.17",
+    "express": "^5.3.0",
+    "http-proxy-middleware": "^4.2.0",
+    "marked": "^18.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.4"
+  }
+}

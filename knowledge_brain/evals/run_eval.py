@@ -42,7 +42,7 @@ async def main() -> None:
     if not db.one("SELECT 1 FROM chunks LIMIT 1"):
         sys.exit("Knowledge base is empty. Run `python -m brain.cli sync --limit 50` first.")
 
-    cases = [json.loads(line) for line in Path(args.questions).read_text().splitlines() if line.strip()]
+    cases = [json.loads(line) for line in Path(args.questions).read_text().splitlines() if line.strip()]  # noqa: ASYNC240
     rows = []
     for case in cases:
         r = await service.ask(case["question"], create_escalation=False, source="api")

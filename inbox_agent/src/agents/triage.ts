@@ -34,6 +34,13 @@ const RISK_RULES: { flag: RiskFlag; pattern: RegExp }[] = [
   { flag: "outage", pattern: /\b(site (is )?down|whole site|not loading|offline|500 error)\b/i },
 ];
 
+/** The customer's own question sentences make a far better search query than the whole email. */
+export function offlineQuestion(email: EmailInput): string {
+  const sentences = email.body.replace(/\s+/g, " ").split(/(?<=[.?!])\s+/);
+  const questions = sentences.filter((s) => s.trim().endsWith("?") && s.length > 12).slice(0, 2);
+  return (questions.length ? questions.join(" ") : `${email.subject}. ${sentences[0] ?? ""}`).slice(0, 400);
+}
+
 /** Deterministic fallback used when no model is configured or the model call fails. */
 export function ruleTriage(email: EmailInput): Triage {
   const text = `${email.subject}\n${email.body}`;
@@ -53,7 +60,7 @@ export function ruleTriage(email: EmailInput): Triage {
     risk_flags,
     sentiment: negative ? "negative" : /\bthank|great|love\b/i.test(text) ? "positive" : "neutral",
     summary: `${email.subject}: ${firstSentence}`.slice(0, 240),
-    kb_question: ["other", "follow_up"].includes(category) ? "" : `${email.subject}. ${email.body}`.slice(0, 600),
+    kb_question: ["other", "follow_up"].includes(category) ? "" : offlineQuestion(email),
     confidence: category === "other" ? 0.3 : 0.6,
   };
 }

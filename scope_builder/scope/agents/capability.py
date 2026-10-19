@@ -16,7 +16,9 @@ from ..prompts import CAPABILITY_SYSTEM, CAPABILITY_USER
 
 
 def brain_question(req: Requirement) -> str:
-    return f"Can the platform do this with built-in features or settings (no custom code)? {req.title}: {req.description}"
+    """Just the need itself: framing words ("built-in", "custom code") would only dilute retrieval. Whether the
+    evidence means configuration or custom work is the judge's call, made in CAPABILITY_SYSTEM."""
+    return f"How to set up {req.title}? {req.description}"
 
 
 def offline_status(req: Requirement, brain: dict[str, Any]) -> tuple[Status, str]:

@@ -179,8 +179,9 @@ class KnowledgeService:
         for h in good:
             body = h.text.split("\n", 1)[-1]
             sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n", body) if len(s.strip()) > 20]
-            ranked = sorted(sentences, key=lambda s: -len(terms & set(tokenize(s))))
-            quotes.extend(ranked[:3])
+            # Pick the 3 most relevant sentences but keep the article's order, so procedures stay in sequence.
+            best = sorted(range(len(sentences)), key=lambda i: -len(terms & set(tokenize(sentences[i]))))[:3]
+            quotes.extend(sentences[i] for i in sorted(best))
         text = "Here is what the help center says (extractive answer, no AI model configured):\n\n" + "\n".join(
             f"> {q}" for q in quotes[:5]
         )

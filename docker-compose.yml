@@ -1,0 +1,14 @@
+# docker compose up --build   ->  http://localhost:8080
+services:
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+    ports:
+      - "8080:8080"
+    volumes:
+      - app-data:/data
+    restart: unless-stopped
+volumes:
+  app-data:

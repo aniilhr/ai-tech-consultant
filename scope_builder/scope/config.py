@@ -6,6 +6,7 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -39,6 +40,12 @@ class Settings(BaseSettings):
     segment_chars: int = 12_000
     indicative_hourly_rate: float | None = None
     company_name: str = "Brilliant Directories"
+
+    @field_validator("indicative_hourly_rate", "scope_db_path", mode="before")
+    @classmethod
+    def _blank_is_none(cls, v: object) -> object:
+        """`INDICATIVE_HOURLY_RATE=` (blank, as in .env.example) means "not set"."""
+        return None if isinstance(v, str) and not v.strip() else v
 
     @property
     def db_path(self) -> Path:

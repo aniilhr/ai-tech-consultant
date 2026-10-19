@@ -1,0 +1,26 @@
+# Render Blueprint: one Docker web service with a persistent disk for the SQLite databases.
+services:
+  - type: web
+    name: ai-tech-consultant
+    runtime: docker
+    plan: starter            # a persistent disk needs a paid instance
+    healthCheckPath: /healthz
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: APP_BASIC_AUTH  # "user:password" - protects the dashboard
+        sync: false
+      - key: BRAIN_ADMIN_TOKEN
+        generateValue: true
+      - key: DATA_DIR
+        value: /data
+      - key: LLM_PROVIDER
+        value: auto
+      - key: AUTO_SEND_ENABLED
+        value: "false"
+      - key: DAILY_SYNC_ENABLED
+        value: "true"

@@ -37,6 +37,10 @@ describe("rule-based triage fallback", () => {
     expect(t.category).toBe("refund_request");
     expect(t.risk_flags).toContain("refund");
   });
+  it("uses the customer's question sentences as the Knowledge Brain query", () => {
+    const t = ruleTriage(samples.find((s) => s.id === "E001") as EmailInput);
+    expect(t.kb_question).toBe("How do I add a new membership plan and set the price?");
+  });
   it("marks outages urgent and legal threats", () => {
     expect(ruleTriage(samples.find((s) => s.id === "E013") as EmailInput)).toMatchObject({ category: "technical_issue", urgency: "urgent" });
     expect(ruleTriage(samples.find((s) => s.id === "E027") as EmailInput).risk_flags).toContain("legal_threat");
