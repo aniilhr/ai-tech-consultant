@@ -5,6 +5,11 @@ One system that **knows the product**, **answers the inbox**, and **turns client
 **Live demo:** _add your deployment link here_ → `https://ai-tech-consultant-a5rv.onrender.com/`
 [click here](https://ai-tech-consultant-a5rv.onrender.com)
 
+**DEMO LOGIN DETAILS :**
+
+- username : admin
+- password : Anil1234
+
 Built for the BusinessLabs capstone, using the public [Brilliant Directories Solution Center](https://support.brilliantdirectories.com/support/sitemap.xml) as the knowledge source.
 
 ---
