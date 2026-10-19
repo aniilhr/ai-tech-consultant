@@ -42,6 +42,8 @@ class Settings(BaseSettings):
 
     @property
     def db_path(self) -> Path:
+        if str(self.scope_db_path) == ":memory:":
+            return Path(":memory:")
         path = Path(self.scope_db_path) if self.scope_db_path else Path(self.data_dir) / "scope.db"
         return path if path.is_absolute() else REPO_ROOT / path
 

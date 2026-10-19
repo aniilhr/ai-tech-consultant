@@ -58,6 +58,8 @@ class Settings(BaseSettings):
 
     @property
     def db_path(self) -> Path:
+        if str(self.brain_db_path) == ":memory:":
+            return Path(":memory:")
         if self.brain_db_path:
             return _resolve(Path(self.brain_db_path))
         return _resolve(Path(self.data_dir)) / "brain.db"
